@@ -8,7 +8,5 @@ import java.util.List;
 @Component
 public interface VendorDao {
 
-    //methods to declare crud operations
-
-    List<VendorEntity> getdata();
+    VendorEntity insertVendor(VendorEntity vendorEntity);
 }

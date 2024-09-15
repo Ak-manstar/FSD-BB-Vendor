@@ -4,20 +4,16 @@ import com.fsd.vendor.dao.VendorDao;
 import com.fsd.vendor.entity.VendorEntity;
 import com.fsd.vendor.repository.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-
-@Repository
+@Component
 public class VendorDaolmpl implements VendorDao {
 
     @Autowired
-    VendorRepository repository;
+    VendorRepository vendorRepository;
 
     @Override
-    public List<VendorEntity> getdata() {
-        return repository.findAll();
+    public VendorEntity insertVendor(VendorEntity vendorEntity) {
+        return vendorRepository.saveAndFlush(vendorEntity);
     }
-
-    //methods to implement crud operations.
 }
