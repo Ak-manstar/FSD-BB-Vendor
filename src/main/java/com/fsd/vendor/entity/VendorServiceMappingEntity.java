@@ -1,6 +1,7 @@
 package com.fsd.vendor.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ public class VendorServiceMappingEntity {
     private Long noOfSeats;
 
     @Column(name="created_at")
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp

@@ -1,6 +1,7 @@
 package com.fsd.vendor.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
@@ -18,6 +19,7 @@ public class ServiceEntity {
     private String serviceName;
 
     @Column(name="created_at")
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     @UpdateTimestamp

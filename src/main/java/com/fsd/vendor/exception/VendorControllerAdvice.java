@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class VendorControllerAdvice extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value= VendorException.class)
-    protected ResponseEntity<Object> handleTemplateException(VendorException exception){
+    protected ResponseEntity<Object> handleVendorException(VendorException exception){
         return new ResponseEntity<>(exception.getErrorBean(),exception.getHttpStatus());
     }
 }
