@@ -6,6 +6,7 @@ import com.fsd.vendor.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -21,7 +22,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public String saveAllServices(List<ServiceEntity>  serviceEntities) {
+    public String saveAllServices(List<String> services) {
+        List<ServiceEntity> serviceEntities=new ArrayList<>();
+        services.stream().forEach(s->serviceEntities.add(new ServiceEntity(s)));
         int count=serviceDao.insertAllServices(serviceEntities);
         String message=count+" services registerd successfully";
         return message;
@@ -29,6 +32,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ServiceEntity getServiceByName(String ServiceName) {
+
         return serviceDao.getService(ServiceName);
     }
 }

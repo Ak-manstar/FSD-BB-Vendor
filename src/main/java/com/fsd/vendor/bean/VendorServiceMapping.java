@@ -2,9 +2,17 @@ package com.fsd.vendor.bean;
 
 public class VendorServiceMapping {
 
+    private Long serviceId;
     private Long price;
     private Long noOfSeats;
 
+    public Long getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
+    }
     public Long getPrice() {
         return price;
     }
@@ -23,8 +31,9 @@ public class VendorServiceMapping {
 
     @Override
     public String toString() {
-        return "VendorServiceMappingEntity{" +
-                "price=" + price +
+        return "VendorServiceMapping{" +
+                "serviceId=" + serviceId +
+                ", price=" + price +
                 ", noOfSeats=" + noOfSeats +
                 '}';
     }

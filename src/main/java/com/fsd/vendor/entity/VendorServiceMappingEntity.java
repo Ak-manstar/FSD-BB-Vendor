@@ -1,5 +1,7 @@
 package com.fsd.vendor.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -7,20 +9,22 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "vendor_service_mapping")
+@Table(name = "vendor_service_mapping",schema = "vendor")
 public class VendorServiceMappingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+//    @JsonBackReference
     @JoinColumn(name="service_id")
-    @ManyToOne(targetEntity = ServiceEntity.class)
-    private Long serviceId;
+    @ManyToOne
+    private ServiceEntity serviceEntity;
 
+    @JsonBackReference
     @JoinColumn(name="vendor_id")
-    @ManyToOne(targetEntity = VendorEntity.class)
-    private Long vendorId;
+    @ManyToOne
+    private VendorEntity vendorEntity;
 
     private Long price;
 
@@ -38,12 +42,16 @@ public class VendorServiceMappingEntity {
     @Column(name = "is_active")
     private int isActive;
 
-    public VendorServiceMappingEntity(Long serviceId, Long vendorId, Long price, Long noOfSeats) {
-        this.serviceId = serviceId;
-        this.vendorId = vendorId;
+    public VendorServiceMappingEntity() {
+    }
+
+
+
+    public VendorServiceMappingEntity(ServiceEntity serviceEntity, VendorEntity vendorEntity, Long price, Long noOfSeats) {
+        this.serviceEntity = serviceEntity;
+        this.vendorEntity = vendorEntity;
         this.price = price;
         this.noOfSeats = noOfSeats;
-        this.isActive=1;
     }
 
     public Long getId() {
@@ -54,20 +62,20 @@ public class VendorServiceMappingEntity {
         this.id = id;
     }
 
-    public Long getServiceId() {
-        return serviceId;
+    public ServiceEntity getServiceEntity() {
+        return serviceEntity;
     }
 
-    public void setServiceId(Long serviceId) {
-        this.serviceId = serviceId;
+    public void setServiceEntity(ServiceEntity serviceEntity) {
+        this.serviceEntity = serviceEntity;
     }
 
-    public Long getVendorId() {
-        return vendorId;
+    public VendorEntity getVendorEntity() {
+        return vendorEntity;
     }
 
-    public void setVendorId(Long vendorId) {
-        this.vendorId = vendorId;
+    public void setVendorEntity(VendorEntity vendorEntity) {
+        this.vendorEntity = vendorEntity;
     }
 
     public Long getPrice() {
@@ -114,8 +122,8 @@ public class VendorServiceMappingEntity {
     public String toString() {
         return "VendorServiceMappingEntity{" +
                 "id=" + id +
-                ", service=" + serviceId +
-                ", vendor=" + vendorId +
+                ", serviceEntity=" + serviceEntity +
+                ", vendorEntity=" + vendorEntity +
                 ", price=" + price +
                 ", noOfSeats=" + noOfSeats +
                 ", createdAt=" + createdAt +

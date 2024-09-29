@@ -16,6 +16,6 @@ public class VendorServiceMappingDaoImpl implements VendorServiceMappingDao {
 
     @Override
     public int insertAllVendorServiceMappings(List<VendorServiceMappingEntity> vendorServiceMappingEntityList) {
-        return vendorServiceMappingRepository.saveAllAndFlush(vendorServiceMappingEntityList).size();
+        return vendorServiceMappingRepository.saveAll(vendorServiceMappingEntityList).size();
     }
 }

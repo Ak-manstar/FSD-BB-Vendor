@@ -1,5 +1,7 @@
 package com.fsd.vendor.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -8,14 +10,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name="service_entity")
+@Table(name="service_entity",schema = "vendor")
 public class ServiceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "service_name",nullable = false)
+    @Column(name = "service_name",nullable = false,unique = true)
     private String serviceName;
 
     @Column(name="created_at")
@@ -29,13 +31,23 @@ public class ServiceEntity {
     @Column(name = "is_active")
     private int isActive;
 
-    @OneToMany(mappedBy = "serviceId")
+//    @JsonManagedReference
+    @JsonIgnore
+    @OneToMany(mappedBy = "serviceEntity",cascade = CascadeType.ALL)
     private List<VendorServiceMappingEntity> vendors;
+
+    public ServiceEntity() {
+    }
+
+    public ServiceEntity(Long id) {
+        this.id = id;
+    }
 
     public ServiceEntity(String serviceName) {
         this.serviceName = serviceName;
         this.isActive=1;
     }
+
 
     public Long getId() {
         return id;

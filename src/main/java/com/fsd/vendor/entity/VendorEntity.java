@@ -1,14 +1,16 @@
 package com.fsd.vendor.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Table(name = "vendor_details")
+@Table(name = "vendor_details",schema = "vendor")
 public class VendorEntity {
 
     @Id
@@ -18,7 +20,7 @@ public class VendorEntity {
     @Column(name = "vendor_outlet",nullable = false)
     private String vendorOutletName;
 
-    @Column(name = "user_id" ,unique = true)
+    @Column(name = "user_id")
     private String userId;
 //    @Column(name = "first_name",nullable = false)
 //    private String firstName;
@@ -28,12 +30,13 @@ public class VendorEntity {
 //    private Long mobile;
 //    @Column(name = "alt_mobile")
 //    private Long alternateMobile;
-    @Column(name = "email")
-    private String email;
-    @OneToMany(mappedBy = "vendorId")
+//    @Column(name = "email")
+//    private String email;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "vendorEntity" ,cascade = CascadeType.ALL)
     private List<VendorServiceMappingEntity> services;
 //    @JsonIgnore
-    private String password;
+//    private String password;
 //    to store lattitude and logitude
 //    private String location;
     private String state;
@@ -41,11 +44,13 @@ public class VendorEntity {
     @Column(name = "pin_code")
     private Long pinCode;
     @Column(name="op_time")
-    private LocalDateTime openingTime;
+    private LocalTime openingTime;
     @Column(name = "cl_time")
-    private LocalDateTime closingTime;
+    private LocalTime closingTime;
     @Column(name = "no_of_staff")
     private int noOfStaff;
+//    @Column(name = "no_of_seats")
+//    private Long noOfSeats;
     @CreationTimestamp
     @Column(name="created_at")
     private LocalDateTime createdAt;
@@ -56,11 +61,16 @@ public class VendorEntity {
     @Column(name = "is_active")
     private int isActive;
 
-    public VendorEntity(String vendorOutletName, String userId, String email, String password, String state, String city, Long pinCode, LocalDateTime openingTime, LocalDateTime closingTime, int noOfStaff) {
+    public VendorEntity() {
+    }
+
+
+
+    public VendorEntity(String vendorOutletName, String userId, String state, String city, Long pinCode, LocalTime openingTime, LocalTime closingTime, int noOfStaff) {
         this.vendorOutletName = vendorOutletName;
         this.userId = userId;
-        this.email = email;
-        this.password = password;
+//        this.email = email;
+//        this.password = password;
         this.state = state;
         this.city = city;
         this.pinCode = pinCode;
@@ -94,13 +104,13 @@ public class VendorEntity {
         this.userId = userId;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
 
     public List<VendorServiceMappingEntity> getServices() {
         return services;
@@ -110,13 +120,13 @@ public class VendorEntity {
         this.services = services;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 
     public String getState() {
         return state;
@@ -142,19 +152,19 @@ public class VendorEntity {
         this.pinCode = pinCode;
     }
 
-    public LocalDateTime getOpeningTime() {
+    public LocalTime getOpeningTime() {
         return openingTime;
     }
 
-    public void setOpeningTime(LocalDateTime openingTime) {
+    public void setOpeningTime(LocalTime openingTime) {
         this.openingTime = openingTime;
     }
 
-    public LocalDateTime getClosingTime() {
+    public LocalTime getClosingTime() {
         return closingTime;
     }
 
-    public void setClosingTime(LocalDateTime closingTime) {
+    public void setClosingTime(LocalTime closingTime) {
         this.closingTime = closingTime;
     }
 
@@ -196,9 +206,9 @@ public class VendorEntity {
                 "id=" + id +
                 ", vendorOutletName='" + vendorOutletName + '\'' +
                 ", userId='" + userId + '\'' +
-                ", email='" + email + '\'' +
+//                ", email='" + email + '\'' +
                 ", services=" + services +
-                ", password='" + password + '\'' +
+//                ", password='" + password + '\'' +
                 ", state='" + state + '\'' +
                 ", city='" + city + '\'' +
                 ", pinCode=" + pinCode +

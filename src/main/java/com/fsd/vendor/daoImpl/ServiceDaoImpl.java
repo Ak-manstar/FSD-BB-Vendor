@@ -26,6 +26,6 @@ public class ServiceDaoImpl implements ServiceDao {
 
     @Override
     public int insertAllServices(List<ServiceEntity> serviceEntities) {
-        return serviceRepository.saveAllAndFlush(serviceEntities).size();
+        return serviceRepository.saveAll(serviceEntities).size();
     }
 }

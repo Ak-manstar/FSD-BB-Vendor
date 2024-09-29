@@ -28,8 +28,8 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseBean> saveAllService(@RequestBody List<ServiceEntity>  serviceEntities){
-        return new ResponseEntity<>(new ResponseBean(productService.saveAllServices(serviceEntities)), HttpStatus.OK);
+    public ResponseEntity<ResponseBean> saveAllService(@RequestBody List<String>  services){
+        return new ResponseEntity<>(new ResponseBean(productService.saveAllServices(services)), HttpStatus.OK);
     }
 
 }
