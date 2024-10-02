@@ -28,9 +28,6 @@ public class VendorServiceMappingEntity {
 
     private Long price;
 
-    @Column(name = "no_of_seats")
-    private Long noOfSeats;
-
     @Column(name="created_at")
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -47,11 +44,11 @@ public class VendorServiceMappingEntity {
 
 
 
-    public VendorServiceMappingEntity(ServiceEntity serviceEntity, VendorEntity vendorEntity, Long price, Long noOfSeats) {
+    public VendorServiceMappingEntity(ServiceEntity serviceEntity, VendorEntity vendorEntity, Long price) {
         this.serviceEntity = serviceEntity;
         this.vendorEntity = vendorEntity;
         this.price = price;
-        this.noOfSeats = noOfSeats;
+        this.isActive=1;
     }
 
     public Long getId() {
@@ -86,14 +83,6 @@ public class VendorServiceMappingEntity {
         this.price = price;
     }
 
-    public Long getNoOfSeats() {
-        return noOfSeats;
-    }
-
-    public void setNoOfSeats(Long noOfSeats) {
-        this.noOfSeats = noOfSeats;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -125,7 +114,6 @@ public class VendorServiceMappingEntity {
                 ", serviceEntity=" + serviceEntity +
                 ", vendorEntity=" + vendorEntity +
                 ", price=" + price +
-                ", noOfSeats=" + noOfSeats +
                 ", createdAt=" + createdAt +
                 ", lastUpdatedAt=" + lastUpdatedAt +
                 ", isActive=" + isActive +

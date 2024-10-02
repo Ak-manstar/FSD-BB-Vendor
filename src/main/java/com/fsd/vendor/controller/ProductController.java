@@ -1,7 +1,7 @@
 package com.fsd.vendor.controller;
 
+import com.fsd.vendor.bean.RegisterServiceRequestBean;
 import com.fsd.vendor.bean.ResponseBean;
-import com.fsd.vendor.entity.ServiceEntity;
 import com.fsd.vendor.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +28,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseBean> saveAllService(@RequestBody List<String>  services){
+    public ResponseEntity<ResponseBean> saveAllService(@RequestBody List<RegisterServiceRequestBean>  services){
         return new ResponseEntity<>(new ResponseBean(productService.saveAllServices(services)), HttpStatus.OK);
     }
 

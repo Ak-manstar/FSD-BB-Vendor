@@ -1,5 +1,6 @@
 package com.fsd.vendor.serviceImpl;
 
+import com.fsd.vendor.bean.RegisterServiceRequestBean;
 import com.fsd.vendor.dao.ServiceDao;
 import com.fsd.vendor.entity.ServiceEntity;
 import com.fsd.vendor.service.ProductService;
@@ -22,9 +23,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public String saveAllServices(List<String> services) {
+    public String saveAllServices(List<RegisterServiceRequestBean> services) {
         List<ServiceEntity> serviceEntities=new ArrayList<>();
-        services.stream().forEach(s->serviceEntities.add(new ServiceEntity(s)));
+        services.stream().forEach(s->serviceEntities.add(new ServiceEntity(s.getServiceName(),s.getImage())));
         int count=serviceDao.insertAllServices(serviceEntities);
         String message=count+" services registerd successfully";
         return message;
@@ -32,7 +33,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ServiceEntity getServiceByName(String ServiceName) {
-
         return serviceDao.getService(ServiceName);
     }
 }

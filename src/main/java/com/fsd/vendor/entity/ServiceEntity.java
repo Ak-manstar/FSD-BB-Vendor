@@ -20,6 +20,9 @@ public class ServiceEntity {
     @Column(name = "service_name",nullable = false,unique = true)
     private String serviceName;
 
+    @Column(name="image")
+    private String image;
+
     @Column(name="created_at")
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -43,8 +46,9 @@ public class ServiceEntity {
         this.id = id;
     }
 
-    public ServiceEntity(String serviceName) {
+    public ServiceEntity(String serviceName,String image) {
         this.serviceName = serviceName;
+        this.image=image;
         this.isActive=1;
     }
 
@@ -97,11 +101,20 @@ public class ServiceEntity {
         this.createdAt = createdAt;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     @Override
     public String toString() {
         return "ServiceEntity{" +
                 "id=" + id +
                 ", serviceName='" + serviceName + '\'' +
+                ", image='" + image + '\'' +
                 ", createdAt=" + createdAt +
                 ", lastUpdatedAt=" + lastUpdatedAt +
                 ", isActive=" + isActive +

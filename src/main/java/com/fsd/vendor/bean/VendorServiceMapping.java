@@ -4,7 +4,6 @@ public class VendorServiceMapping {
 
     private Long serviceId;
     private Long price;
-    private Long noOfSeats;
 
     public Long getServiceId() {
         return serviceId;
@@ -21,20 +20,11 @@ public class VendorServiceMapping {
         this.price = price;
     }
 
-    public Long getNoOfSeats() {
-        return noOfSeats;
-    }
-
-    public void setNoOfSeats(Long noOfSeats) {
-        this.noOfSeats = noOfSeats;
-    }
-
     @Override
     public String toString() {
         return "VendorServiceMapping{" +
                 "serviceId=" + serviceId +
                 ", price=" + price +
-                ", noOfSeats=" + noOfSeats +
                 '}';
     }
 }

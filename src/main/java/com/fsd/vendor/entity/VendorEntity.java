@@ -20,7 +20,7 @@ public class VendorEntity {
     @Column(name = "vendor_outlet",nullable = false)
     private String vendorOutletName;
 
-    @Column(name = "user_id")
+    @Column(name = "user_id",unique = true)
     private String userId;
 //    @Column(name = "first_name",nullable = false)
 //    private String firstName;
@@ -43,6 +43,10 @@ public class VendorEntity {
     private String city;
     @Column(name = "pin_code")
     private Long pinCode;
+    @Column(name="aggress_line_1")
+    private String addresLine1;
+    @Column(name="address_line_2")
+    private String addressLine2;
     @Column(name="op_time")
     private LocalTime openingTime;
     @Column(name = "cl_time")
@@ -64,16 +68,14 @@ public class VendorEntity {
     public VendorEntity() {
     }
 
-
-
-    public VendorEntity(String vendorOutletName, String userId, String state, String city, Long pinCode, LocalTime openingTime, LocalTime closingTime, int noOfStaff) {
+    public VendorEntity(String vendorOutletName, String userId, String state, String city, Long pinCode, String addresLine1, String addressLine2, LocalTime openingTime, LocalTime closingTime, int noOfStaff) {
         this.vendorOutletName = vendorOutletName;
         this.userId = userId;
-//        this.email = email;
-//        this.password = password;
         this.state = state;
         this.city = city;
         this.pinCode = pinCode;
+        this.addresLine1 = addresLine1;
+        this.addressLine2 = addressLine2;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
         this.noOfStaff = noOfStaff;
@@ -88,100 +90,12 @@ public class VendorEntity {
         this.id = id;
     }
 
-    public String getVendorOutletName() {
-        return vendorOutletName;
+    public int getIsActive() {
+        return isActive;
     }
 
-    public void setVendorOutletName(String vendorOutletName) {
-        this.vendorOutletName = vendorOutletName;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-
-    public List<VendorServiceMappingEntity> getServices() {
-        return services;
-    }
-
-    public void setServices(List<VendorServiceMappingEntity> services) {
-        this.services = services;
-    }
-
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Long getPinCode() {
-        return pinCode;
-    }
-
-    public void setPinCode(Long pinCode) {
-        this.pinCode = pinCode;
-    }
-
-    public LocalTime getOpeningTime() {
-        return openingTime;
-    }
-
-    public void setOpeningTime(LocalTime openingTime) {
-        this.openingTime = openingTime;
-    }
-
-    public LocalTime getClosingTime() {
-        return closingTime;
-    }
-
-    public void setClosingTime(LocalTime closingTime) {
-        this.closingTime = closingTime;
-    }
-
-    public int getNoOfStaff() {
-        return noOfStaff;
-    }
-
-    public void setNoOfStaff(int noOfStaff) {
-        this.noOfStaff = noOfStaff;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
     }
 
     public LocalDateTime getLastUpdatedAt() {
@@ -192,12 +106,100 @@ public class VendorEntity {
         this.lastUpdatedAt = lastUpdatedAt;
     }
 
-    public int getIsActive() {
-        return isActive;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setIsActive(int isActive) {
-        this.isActive = isActive;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public int getNoOfStaff() {
+        return noOfStaff;
+    }
+
+    public void setNoOfStaff(int noOfStaff) {
+        this.noOfStaff = noOfStaff;
+    }
+
+    public LocalTime getClosingTime() {
+        return closingTime;
+    }
+
+    public void setClosingTime(LocalTime closingTime) {
+        this.closingTime = closingTime;
+    }
+
+    public LocalTime getOpeningTime() {
+        return openingTime;
+    }
+
+    public void setOpeningTime(LocalTime openingTime) {
+        this.openingTime = openingTime;
+    }
+
+    public String getAddressLine2() {
+        return addressLine2;
+    }
+
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
+    }
+
+    public String getAddresLine1() {
+        return addresLine1;
+    }
+
+    public void setAddresLine1(String addresLine1) {
+        this.addresLine1 = addresLine1;
+    }
+
+    public Long getPinCode() {
+        return pinCode;
+    }
+
+    public void setPinCode(Long pinCode) {
+        this.pinCode = pinCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public List<VendorServiceMappingEntity> getServices() {
+        return services;
+    }
+
+    public void setServices(List<VendorServiceMappingEntity> services) {
+        this.services = services;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getVendorOutletName() {
+        return vendorOutletName;
+    }
+
+    public void setVendorOutletName(String vendorOutletName) {
+        this.vendorOutletName = vendorOutletName;
     }
 
     @Override
@@ -206,12 +208,12 @@ public class VendorEntity {
                 "id=" + id +
                 ", vendorOutletName='" + vendorOutletName + '\'' +
                 ", userId='" + userId + '\'' +
-//                ", email='" + email + '\'' +
                 ", services=" + services +
-//                ", password='" + password + '\'' +
                 ", state='" + state + '\'' +
                 ", city='" + city + '\'' +
                 ", pinCode=" + pinCode +
+                ", addresLine1='" + addresLine1 + '\'' +
+                ", addressLine2='" + addressLine2 + '\'' +
                 ", openingTime=" + openingTime +
                 ", closingTime=" + closingTime +
                 ", noOfStaff=" + noOfStaff +
