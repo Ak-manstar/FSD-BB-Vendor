@@ -6,6 +6,7 @@ import com.fsd.vendor.repository.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -35,5 +36,10 @@ public class VendorDaolmpl implements VendorDao {
         return vendorRepository.save(vendorEntity);
     }
 
+
+    @Override
+    public List<VendorEntity> getAllVendor(VendorEntity vendorEntity){
+        return vendorRepository.findAll();
+    }
 
 }

@@ -106,4 +106,10 @@ public class VendorServiceImpl implements VendorService {
         return existingMappings;
     }
 
+    @Override
+    public List<VendorEntity> fetchAllVendor(VendorEntity vendorEntity){
+        List<VendorEntity> vendorEntityList = vendorDao.getAllVendor(vendorEntity);
+        return  vendorDao.getAllVendor(vendorEntity);
+    }
+
 }

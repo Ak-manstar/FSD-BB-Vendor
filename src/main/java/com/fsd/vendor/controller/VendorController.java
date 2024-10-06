@@ -4,6 +4,7 @@ import com.fsd.vendor.bean.RegisterVendorRequestBean;
 import com.fsd.vendor.bean.RegisterVendorResponseBean;
 import com.fsd.vendor.bean.ResponseBean;
 import com.fsd.vendor.bean.UpdateVendorRequestBean;
+import com.fsd.vendor.entity.VendorEntity;
 import com.fsd.vendor.service.VendorService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class VendorController {
     @PutMapping("/{id}")
     public ResponseEntity<ResponseBean> updateVendorDetails(@PathVariable("id") String vendorid,@RequestBody UpdateVendorRequestBean updateVendorDetailsBean){
         return new ResponseEntity<>(new ResponseBean(service.updateVendorDetails(vendorid,updateVendorDetailsBean)), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<ResponseBean> fetchAllVendor(VendorEntity vendorEntity){
+        return  new ResponseEntity<>(new ResponseBean(service.fetchAllVendor(vendorEntity)), HttpStatus.OK);
     }
 
 
