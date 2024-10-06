@@ -29,4 +29,11 @@ public class VendorDaolmpl implements VendorDao {
             return null;
         }
     }
+
+    @Override
+    public VendorEntity updateVendor(VendorEntity vendorEntity) {
+        return vendorRepository.save(vendorEntity);
+    }
+
+
 }

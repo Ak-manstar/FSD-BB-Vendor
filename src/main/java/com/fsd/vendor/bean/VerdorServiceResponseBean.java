@@ -5,6 +5,15 @@ public class VerdorServiceResponseBean {
     private Long vendorServicekey;
     private String serviceName;
     private Long price;
+    private Long serviceId;
+
+    public Long getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
+    }
 
     public Long getVendorServicekey() {
         return vendorServicekey;

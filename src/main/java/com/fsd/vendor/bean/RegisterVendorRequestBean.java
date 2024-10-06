@@ -26,7 +26,16 @@ public class RegisterVendorRequestBean {
     private LocalTime openingTime;
     private LocalTime closingTime;
     private int noOfStaff;
+    private Long mobile;
     private List<VendorServiceMapping> services;
+
+    public Long getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(Long mobile) {
+        this.mobile = mobile;
+    }
 
     public String getUserId() {
         return userId;

@@ -20,11 +20,15 @@ public class MapperUtil {
         vendorResponseBean.setClosingTime(vendorEntity.getClosingTime());
         vendorResponseBean.setNoOfStaff(vendorEntity.getNoOfStaff());
         vendorResponseBean.setIsActive(vendorEntity.getIsActive());
+        vendorResponseBean.setAddressLine1(vendorEntity.getAddresLine1());
+        vendorResponseBean.setAddressLine2(vendorEntity.getAddressLine2());
+        vendorResponseBean.setMobile(vendorEntity.getMobile());
         List<VerdorServiceResponseBean> verdorServiceResponseBeans= vendorEntity.getServices().stream().map(e->{
             VerdorServiceResponseBean verdorServiceResponseBean=new VerdorServiceResponseBean();
             verdorServiceResponseBean.setVendorServicekey(e.getId());
             verdorServiceResponseBean.setServiceName(e.getServiceEntity().getServiceName());
             verdorServiceResponseBean.setPrice(e.getPrice());
+            verdorServiceResponseBean.setServiceId(e.getServiceEntity().getId());
             return verdorServiceResponseBean;
         }).collect(Collectors.toList());
         vendorResponseBean.setServices(verdorServiceResponseBeans);

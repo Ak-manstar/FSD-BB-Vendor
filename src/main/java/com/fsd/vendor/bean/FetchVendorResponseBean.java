@@ -17,6 +17,16 @@ public class FetchVendorResponseBean {
     private LocalTime closingTime;
     private int noOfStaff;
     private int isActive;
+    private Long mobile;
+
+
+    public Long getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(Long mobile) {
+        this.mobile = mobile;
+    }
 
     public String getVendorOutletName() {
         return vendorOutletName;

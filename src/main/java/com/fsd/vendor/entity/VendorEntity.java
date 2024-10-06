@@ -26,8 +26,8 @@ public class VendorEntity {
 //    private String firstName;
 //    @Column(name = "last_name")
 //    private String lastName;
-//    @Column(name = "mobile",nullable = false)
-//    private Long mobile;
+    @Column(name = "mobile",nullable = false)
+    private Long mobile;
 //    @Column(name = "alt_mobile")
 //    private Long alternateMobile;
 //    @Column(name = "email")
@@ -65,10 +65,18 @@ public class VendorEntity {
     @Column(name = "is_active")
     private int isActive;
 
+    public Long getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(Long mobile) {
+        this.mobile = mobile;
+    }
+
     public VendorEntity() {
     }
 
-    public VendorEntity(String vendorOutletName, String userId, String state, String city, Long pinCode, String addresLine1, String addressLine2, LocalTime openingTime, LocalTime closingTime, int noOfStaff) {
+    public VendorEntity(String vendorOutletName, String userId, String state, String city, Long pinCode, String addresLine1, String addressLine2, LocalTime openingTime, LocalTime closingTime, int noOfStaff,Long moible) {
         this.vendorOutletName = vendorOutletName;
         this.userId = userId;
         this.state = state;
@@ -80,6 +88,7 @@ public class VendorEntity {
         this.closingTime = closingTime;
         this.noOfStaff = noOfStaff;
         this.isActive=1;
+        this.mobile = moible;
     }
 
     public Long getId() {

@@ -8,4 +8,7 @@ public interface VendorDao {
 
     VendorEntity insertVendor(VendorEntity vendorEntity);
     VendorEntity getVendor(String vendorId);
+    VendorEntity updateVendor( VendorEntity vendorEntity);
+
 }
+
