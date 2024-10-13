@@ -6,6 +6,15 @@ public class VerdorServiceResponseBean {
     private String serviceName;
     private Long price;
     private Long serviceId;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Long getServiceId() {
         return serviceId;

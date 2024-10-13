@@ -111,8 +111,8 @@ public class VendorServiceMappingEntity {
     public String toString() {
         return "VendorServiceMappingEntity{" +
                 "id=" + id +
-                ", serviceEntity=" + serviceEntity +
-                ", vendorEntity=" + vendorEntity +
+                ", serviceEntityId=" + (serviceEntity != null ? serviceEntity.getId() : "null") +
+                ", vendorEntityId=" + (vendorEntity != null ? vendorEntity.getId() : "null") +
                 ", price=" + price +
                 ", createdAt=" + createdAt +
                 ", lastUpdatedAt=" + lastUpdatedAt +

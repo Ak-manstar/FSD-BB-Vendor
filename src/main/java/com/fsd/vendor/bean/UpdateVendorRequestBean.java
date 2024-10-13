@@ -16,6 +16,9 @@ public class UpdateVendorRequestBean {
     private int noOfStaff;
     private List<VendorServiceMapping> services;
 
+    public UpdateVendorRequestBean() {
+    }
+
     public String getVendorOutletName() {
         return vendorOutletName;
     }
