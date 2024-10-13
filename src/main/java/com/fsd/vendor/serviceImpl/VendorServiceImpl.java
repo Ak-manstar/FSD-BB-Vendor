@@ -70,6 +70,7 @@ public class VendorServiceImpl implements VendorService {
             vendorEntity.setClosingTime(updateVendorDetailsRequestBean.getClosingTime());
             vendorEntity.setNoOfStaff(updateVendorDetailsRequestBean.getNoOfStaff());
             vendorEntity.setServices(updateOrAddVendorServices(vendorEntity,updateVendorDetailsRequestBean));
+            vendorEntity.setVendorOutletName(updateVendorDetailsRequestBean.getVendorOutletName());
             vendorDao.updateVendor(vendorEntity);
             return new Status(true,"Vendor details updated successfully");
         }
