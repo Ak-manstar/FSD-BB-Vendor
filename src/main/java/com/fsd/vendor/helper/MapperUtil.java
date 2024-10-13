@@ -29,6 +29,7 @@ public class MapperUtil {
             verdorServiceResponseBean.setServiceName(e.getServiceEntity().getServiceName());
             verdorServiceResponseBean.setPrice(e.getPrice());
             verdorServiceResponseBean.setServiceId(e.getServiceEntity().getId());
+            verdorServiceResponseBean.setImage(e.getServiceEntity().getImage());
             return verdorServiceResponseBean;
         }).collect(Collectors.toList());
         vendorResponseBean.setServices(verdorServiceResponseBeans);
